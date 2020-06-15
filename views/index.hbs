@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>App</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <address>
+                            <strong>{{name}}</strong>
+                            <br>
+                            {{address}}
+                            <br>
+                            <abbr title="Phone">P:</abbr> {{phone}}
+                        </address>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                        <p>
+                            <em>Fecha: {{date}}</em>
+                        </p>
+                        <p>
+                            <em>Recibo #: {{ recipe }}</em>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <h1>Recibo</h1>
+                    </div>
+                    </span>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>#</th>
+                                <th class="text-center">Precio</th>
+                                <th class="text-center">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-9"><em>{{payment.description}}</em></h4>
+                                </td>
+                                <td class="col-md-1" style="text-align: center"></td>
+                                <td class="col-md-1 text-center">{{ payment.taxReturnBase }}</td>
+                                <td class="col-md-1 text-center">{{ payment.taxReturnBase }}</td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td class="text-right">
+                                    <p>
+                                        <strong>Subtotal: </strong>
+                                    </p>
+                                    <p>
+                                        <strong>Tax: </strong>
+                                    </p>
+                                </td>
+                                <td class="text-center">
+                                    <p>
+                                        <strong>$ {{ payment.taxReturnBase }}</strong>
+                                    </p>
+                                    <p>
+                                        <strong>$ {{  payment.tax  }}</strong>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td class="text-right">
+                                    <h4><strong>Total: </strong></h4>
+                                </td>
+                                <td class="text-center text-danger">
+                                    <h4><strong>{{ payment.amount }}</strong></h4>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <form method="post" action="{{ payment.url }}">
+                        <input name="merchantId" type="hidden" value="{{ payment.merchantId }}">
+                        <input name="accountId" type="hidden" value="{{ payment.accountId }}">
+                        <input name="description" type="hidden" value="{{ payment.description }}">
+                        <input name="referenceCode" type="hidden" value="{{ payment.referenceCode }}">
+                        <input name="amount" type="hidden" value="{{ payment.amount }}">
+                        <input name="tax" type="hidden" value="{{ payment.tax }}">
+                        <input name="taxReturnBase" type="hidden" value="{{ payment.taxReturnBase }}">
+                        <input name="currency" type="hidden" value="{{ payment.currency }}">
+                        <input name="signature" type="hidden" value="{{ payment.signature }}">
+                        <input name="test" type="hidden" value="{{ payment.test }}">
+                        <input name="buyerEmail" type="hidden" value="{{ payment.buyerEmail }}">
+                        <input name="responseUrl" type="hidden" value="{{ payment.responseUrl }}">
+                        <input name="confirmationUrl" type="hidden" value="{{ payment.confirmationUrl }}">
+                        <button type="submit" class="btn btn-success btn-lg btn-block">
+                            Pagar ahora   <span class="glyphicon glyphicon-chevron-right"></span>
+                        </button>
+                    </form>
+                    </td>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
